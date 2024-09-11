@@ -1,0 +1,16 @@
+curl --location 'http://localhost:8083/connectors' \
+--header 'Content-Type: application/json' \
+--data '{
+  "name": "fulfillment-connector",  
+  "config": {
+    "connector.class": "io.debezium.connector.postgresql.PostgresConnector", 
+    "database.hostname": "host.docker.internal", 
+    "database.port": "5432", 
+    "database.user": "postgres", 
+    "database.password": "123456", 
+    "database.dbname" : "product_db", 
+    "topic.prefix": "fulfillment", 
+    "schema.include.list": "public",
+    "plugin.name": "pgoutput"
+  }
+}'
